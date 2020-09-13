@@ -1,0 +1,11 @@
+프로젝트 루트에서 다음 명령어 입력
+python -m venv myvenv
+
+가상환경 사용
+myvenv\Scripts\activate
+
+장고 설치 전 pip 확인
+python -m pip install --upgrade pip
+
+장고 설치
+pip install django~=3.1.0

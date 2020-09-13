@@ -1,0 +1,6 @@
+crudapp 생성
+python manage.py startapp crudapp
+
+# crudapp 폴더 아래의 apps 파일 안에있는 CrudappConfig를 가져와라
+crudproject/settings.py - INSTALLED_APPS 안에 Config 추가하기
+crudapp.apps.CrudappConfig

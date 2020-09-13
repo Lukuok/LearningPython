@@ -1,0 +1,9 @@
+파이선 가상환경에서 실행
+crudproject이름의 프로젝트 생성
+django-admin startproject crudproject
+
+현재 커서 이동
+cd crudproject
+
+서버 실행
+python manage.py runserver

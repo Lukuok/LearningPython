@@ -1,2 +1,2 @@
-relation : https://myjamong.tistory.com/51
-lib : 	pip install openpyxl
+relation : https://growingsaja.tistory.com/104
+lib : 	pip install xlsxwriter

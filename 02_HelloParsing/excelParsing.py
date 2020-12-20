@@ -1,86 +1,45 @@
-import xlsxwriter
+import xlrd
 
- 
+# 읽기 라이브러리를 통해 현재 같은 디렉터리상에 있는 test.xls를 불러와 workbook에 할당합니다.
+workbook = xlrd.open_workbook('excel/report.xls')
 
-# Create an new Excel file and add a worksheet. ( filename = test.xlsx )
-# test.xlsx 라는 엑셀 파일 생성 후 오픈
+# 워크북에 할당된 엑셀 데이터의 첫번째시트를 불러옵니다.
+worksheet = workbook.sheet_by_index(0)
 
-workbook = xlsxwriter.Workbook('test.xlsx')
-worksheet = workbook.add_worksheet()
+# nrows에 불러온 첫번째 시트의 행수를 불러옵니다.
+totalRows = worksheet.nrows
 
+orderNo   = worksheet.cell_value(2,3)
+orderDate = worksheet.cell_value(4,15)
+area      = worksheet.cell_value(5,4)
+print(orderNo, orderDate, area)
+print(totalRows)
+print()
 
+# 불러온 데이터를 저장할 딕셔너리를 선언합니다.
+# datadict = {}
 
-# Make cell_format which we need with setting that we want
-# cell_format 만들어두기 (나중에 여러번 사용할 것을 대비하여)
+# # 행수만큼의 for loop 를 돌려서 행단위로 데이터를 불러와 datadict에 저장합니다.
+# for row_num in range(nrows):
+#     datadict[row_num] = {}
+#     # field_cnt는 열의 개수입니다. 열갯수는 여러분이 지정하시면 됩니다.
+#     for col in range(field_cnt):
+#         # datadict[row_num]에 열숫자별로 셀데이터를 저장합니다.
+#         datadict[row_num][col] = worksheet.cell_value(row_num, col)
 
-cell_format = workbook.add_format({'border': 1})
-cell_format2 = workbook.add_format({'border': 1})
-cell_format2.set_bold(1)
-
-
-
-# Widen the first column to make the text clearer. ( A~A column )
-# A 열부터 A 열까지 너비를 20으로 세팅
-
-worksheet.set_column('A:A', 20)
-
-
-
-# Add a bold format to use to highlight cells.
-# cell_boldform 변수를 글씨 굵게 셀 세팅으로 설정
-
-cell_boldform = workbook.add_format({'bold': True})
-
-
-
-# Write some simple text.
-# A1 셀에 Hello 입력
-
-worksheet.write('A1', 'Hello')
-
-
-
-# Set background color.
-# 셀의 배경 색을 세팅 - 괄호 안의 내용은 구글에 검색하면 원하는 색의 값을 알 수 있음
-
-cell_format.set_bg_color('#CECECE')
-
-
-
-# Text with formatting.
-# A2 셀에 cell_boldform 포맷으로 World 입력 (위에 굵게로 세팅하였음)
-
-worksheet.write('A2', 'World', cell_boldform)
-
-
-
-# Write some numbers, with row/column notation.
-# 행, 열, 내용 >> 쓰기
-
-worksheet.write(2, 0, 123)
-worksheet.write(3, 0, 123.456)
-
-
-
-# Insert an image.
-# 해당 셀에 이미지 파일 넣기
-
-#worksheet.insert_image('B5', 'picture_test.png')
-
-
-
-# save and close excel file.
-# 저장 후 엑셀 파일 닫기
-
-workbook.close()
-
-
-
-# And so on
-# 기타 참고 예시
-
-cell_format = workbook.add_format({'align': 'center', 'valign': 'vcentoer', 'border': 1})
-cell_format.set_font_color('red')
-cell_format = workbook.add_format({'bold': True, 'font_color': 'red'})
-worksheet.set_row(0, 18, cell_format)
-worksheet.set_column('A:D', 20, cell_format)
+for rowIdx in range(12,totalRows):
+    if rowIdx%2 == 0 and worksheet.cell_value(rowIdx,2) != '':
+        print(worksheet.cell_value(rowIdx,2))
+    if rowIdx%2 == 1 and worksheet.cell_value(rowIdx,9) != '':
+        print(worksheet.cell_value(rowIdx,9))
+        print(worksheet.cell_value(rowIdx,10))
+        print(worksheet.cell_value(rowIdx,11))
+        print(worksheet.cell_value(rowIdx,14))
+        print(worksheet.cell_value(rowIdx,17))
+        print()
+# for row_num in range(nrows):
+#     datadict[row_num] = {}
+#     # field_cnt는 열의 개수입니다. 열갯수는 여러분이 지정하시면 됩니다.
+#     for col in range(field_cnt):
+#         # datadict[row_num]에 열숫자별로 셀데이터를 저장합니다.
+#         datadict[row_num][col] = worksheet.cell_value(row_num, col)

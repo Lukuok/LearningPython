@@ -1,7 +1,7 @@
 import xlrd
 
 # 읽기 라이브러리를 통해 현재 같은 디렉터리상에 있는 test.xls를 불러와 workbook에 할당합니다.
-workbook = xlrd.open_workbook('excel/report.xls')
+workbook = xlrd.open_workbook('data/report_KCC.xls')
 
 # 워크북에 할당된 엑셀 데이터의 첫번째시트를 불러옵니다.
 worksheet = workbook.sheet_by_index(0)
@@ -37,9 +37,3 @@ for rowIdx in range(12,totalRows):
         print(worksheet.cell_value(rowIdx,14))
         print(worksheet.cell_value(rowIdx,17))
         print()
-# for row_num in range(nrows):
-#     datadict[row_num] = {}
-#     # field_cnt는 열의 개수입니다. 열갯수는 여러분이 지정하시면 됩니다.
-#     for col in range(field_cnt):
-#         # datadict[row_num]에 열숫자별로 셀데이터를 저장합니다.
-#         datadict[row_num][col] = worksheet.cell_value(row_num, col)

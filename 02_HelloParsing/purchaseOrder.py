@@ -8,6 +8,19 @@ class PurchaseOrder:
         self.purchaseOrderPrice   = 0         #주문가격
         self.purchaseOrderMemo    = ""        #메모
 
+    def __str__ (self):
+        return '({}, {}, {}, {}, {}, {}, {})'.format(
+            self.purchaseOrderId, 
+            self.purchaseOrderDate,
+            self.purchaseOrderSupplierName,
+            self.purchaseOrderSupplierType,
+            self.purchaseOrderItemList,    
+            self.purchaseOrderPrice,
+            self.purchaseOrderMemo)
+
+    def __repr__ (self):
+        return str(vars(self))
+        
 class PurchaseOrderItem:
     def __init__(self):
         self.purchaseItemId         = "" #품목ID
@@ -17,3 +30,14 @@ class PurchaseOrderItem:
         self.purchaseItemAmount     = "" #주문개수
         self.purchaseItemPrice      = 0  #가격
         self.purchaseItemMemo       = "" #메모
+    
+    def __repr__ (self):
+        return str(vars(self))
+        # '({}, {}, {}, {}, {}, {}, {})'.format(
+        # self.purchaseItemId,  
+        # self.purchaseItemName,
+        # self.purchaseItemUnitAmount,
+        # self.purchaseItemUnit,
+        # self.purchaseItemAmount,
+        # self.purchaseItemPrice,
+        # self.purchaseItemMemo)

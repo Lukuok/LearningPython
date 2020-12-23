@@ -26,7 +26,7 @@ def eoc2String(eocFilePath, parseString):
     return eocContent
 
 def string2ObjectForKCC(csvContent):
-
+    
     order = PurchaseOrder()
     order.purchaseOrderId   = csvContent[2][3]
     order.purchaseOrderDate = csvContent[2][3][0:8]
